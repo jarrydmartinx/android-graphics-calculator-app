@@ -1,0 +1,12 @@
+ <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+     tools:context="comp6442.comp6442_assignment_2_2016.layout.StdButtonsFrag"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_gravity="center"
+     android:background="#bdf3fb"
+     android:gravity="center_horizontal"
+     android:id="@+id/buttonGridView"
+     android:stretchMode="columnWidth"
+     android:numColumns="4">
+ </GridView>

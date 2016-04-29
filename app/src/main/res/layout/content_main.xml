@@ -12,8 +12,41 @@
     tools:context="comp6442.comp6442_assignment_2_2016.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
+    <fragment
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:name="comp6442.comp6442_assignment_2_2016.layout.ExpressionsFrag"
+        android:id="@+id/expFrag"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/viewFlipper"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewFlipper"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:animateFirstView="false">
+
+        <fragment
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:name="comp6442.comp6442_assignment_2_2016.layout.ScientificButtonsFrag"
+            android:id="@+id/sciButtonGrid" />
+
+        <fragment
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:name="comp6442.comp6442_assignment_2_2016.layout.StdButtonsFrag"
+            android:id="@+id/stdButtonGrid" />
+    </ViewFlipper>
+
+
 </RelativeLayout>
