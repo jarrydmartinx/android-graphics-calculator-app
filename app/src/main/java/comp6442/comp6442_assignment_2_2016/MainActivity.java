@@ -1,18 +1,20 @@
 package comp6442.comp6442_assignment_2_2016;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import comp6442.comp6442_assignment_2_2016.layoutClasses.ExpressionsFrag;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import comp6442.comp6442_assignment_2_2016.layoutClasses.ExpHistFrag;
 import comp6442.comp6442_assignment_2_2016.layoutClasses.ButtonsFrag;
 
 
 public class MainActivity extends AppCompatActivity
-    implements ExpressionsFrag.OnExpSelectedListener, ButtonsFrag.OnButtonSelectedListener {
+    implements ExpHistFrag.OnExpSelectedListener, ButtonsFrag.OnButtonSelectedListener {
 
     public void onArticleSelected(int position) {
         // The user selected the headline of an article from the HeadlinesFragment
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState != null) {
             return;
         }
-        ExpressionsFrag expFrag = new ExpressionsFrag();
+        ExpHistFrag expFrag = new ExpHistFrag();
         ButtonsFrag stdButtonsFrag = new ButtonsFrag();
         if (findViewById(R.id.fragment_container_top) != null
                 && findViewById(R.id.fragment_container_bottom) != null) {
@@ -50,8 +52,6 @@ public class MainActivity extends AppCompatActivity
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Check that the activity is using the layout version with
-        // the fragment_container FrameLayout
     }
 
     @Override
@@ -85,4 +85,5 @@ public class MainActivity extends AppCompatActivity
     public void onExpSelected(int position) {
         return;
     }
+
 }

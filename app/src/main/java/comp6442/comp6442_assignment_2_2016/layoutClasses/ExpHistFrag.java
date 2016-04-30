@@ -17,16 +17,21 @@ import java.util.Arrays;
 import comp6442.comp6442_assignment_2_2016.R;
 
 
-public class ExpressionsFrag extends Fragment {
+public class ExpHistFrag extends Fragment {
     private Context context;
     private OnExpSelectedListener mListener;
-    private ListView expListView;
     private ArrayList<String> expHistArray;
-    private TextView equalsTextView;
-    private EditText inputEditText;
+    public EditText inputEditText;
+    public ListView expListView;
+    public ExpHistAdapter expHistAdapter;
+    public TextView equalsTextView;
 
-    public ExpressionsFrag() {
+    public ExpHistFrag() {
         // Required empty public constructor
+    }
+
+    public ListView getExpListView() {
+        return expListView;
     }
 
     /**
@@ -35,11 +40,11 @@ public class ExpressionsFrag extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ExpressionsFrag.
+     * @return A new instance of fragment ExpHistFrag.
      */
     // TODO: Rename and change types and number of parameters
-//    public static ExpressionsFrag newInstance(String param1, String param2) {
-//        ExpressionsFrag fragment = new ExpressionsFrag();
+//    public static ExpHistFrag newInstance(String param1, String param2) {
+//        ExpHistFrag fragment = new ExpHistFrag();
 ////        Bundle args = new Bundle();
 ////        args.putString(ARG_PARAM1, param1);
 ////        args.putString(ARG_PARAM2, param2);
@@ -56,15 +61,17 @@ public class ExpressionsFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         context = getContext();
-        expHistArray = new ArrayList<>(Arrays.asList("first fake exp", "second fake exp", "3rd 5% + 23423*log(6)" ));
+        expHistArray = new ArrayList<>(Arrays.asList("first fake exp", "second fake exp", "3rd 5% + 23423*log(6)","first fake exp", "second fake exp","first fake exp", "second fake exp","first fake exp", "second fake exp","last fake exp"));
         // Inflate the layout for this fragment
         View aView = inflater.inflate(R.layout.fragment_expressions, container, false);
         inputEditText = (EditText) aView.findViewById(R.id.inputEditText);
         equalsTextView = (TextView) aView.findViewById(R.id.equalsTextView);
-        expListView = (ListView) aView.findViewById(R.id.expListView);
-        ExpHistAdapter expHistAdapter = new ExpHistAdapter(context, R.id.expListView, expHistArray);
         equalsTextView.setText("");
+
+        expListView = (ListView) aView.findViewById(R.id.expListView);
+        expHistAdapter = new ExpHistAdapter(context, R.id.listViewText, expHistArray);
         expListView.setAdapter(expHistAdapter);
+        expListView.setSelection(expHistAdapter.getCount() - 1);
         expListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

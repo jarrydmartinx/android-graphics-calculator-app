@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import comp6442.comp6442_assignment_2_2016.R;
@@ -24,6 +25,7 @@ public class ButtonAdapter extends BaseAdapter {
     private List<Object> sciButtonSyms;
     private List<Object> octButtonSyms;
     private List<Object> hexButtonSyms;
+    private List<Object> symList;
 
     public void setModeID(Integer modeID) {
         this.modeID = modeID;
@@ -32,37 +34,43 @@ public class ButtonAdapter extends BaseAdapter {
     public ButtonAdapter(Context mContext) {
         this.context = mContext;
         modeID = R.integer.STD_MODE;
+
         stdButtonSyms = new ArrayList<Object>(
-                Arrays.asList("pi","e","%","|x|","e^x","x^2","x^n","x!","ln","log",
-                        "log2","sqrt","sin","cos","tan", "1/x", "(",")","C", "del")
+                Arrays.asList(
+                       "(",")","del", "/", "7","8","9","*","4","5","6","-","1","2","3","+","+/-","0",".","=")
         );
         sciButtonSyms = new ArrayList<Object>(
-                Arrays.asList("+/-","0",".","=","1","2","3","+","4","5","6","-","7",
-                        "8","9","*","(",")","C", "del")
+                Arrays.asList(
+                        "(",")","C", "del","pi","e","%","|x|","e^x","x^2","x^n","x!","ln","log",
+                        "log2","sqrt","sin","cos","tan", "1/x")
         );
         octButtonSyms = new ArrayList<Object>(
-                Arrays.asList("+/-","0",".","=","1","2","3","+","4","5","6","-","7","hex","dec"
-                        ,"*","(",")","C", "del")
+                Arrays.asList(
+                        "(",")","del", "/","7","hex","dec"
+                        ,"*","4","5","6","-","1","2","3","+","+/-","0",".","=")
         );
         hexButtonSyms = new ArrayList<Object>(
-                Arrays.asList("+/-","0",".","=","1","2","3","+","4","5","6","-","7",
-                        "8","9","*", "A","B","C","D","E","F", "oct","dec","(",")","C", "del")
+                Arrays.asList("(",")","del", "/", "E","F", "oct","dec", "A","B","C","D","7",
+                        "8","9","*","4","5","6","-","+/-","0",".","=")
         );
+        symList = stdButtonSyms;
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return symList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return symList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        if (symList.get(position) instanceof Integer)
+            return (long) symList.get(position);
+        else return 0;
     }
 
     @Override

@@ -65,7 +65,8 @@ public class ButtonsFrag extends Fragment {
         View aView;
         aView = inflater.inflate(R.layout.fragment_std_buttons, container, false);
         GridView buttonGridView = (GridView) aView.findViewById(R.id.buttonGridView);
-        buttonGridView.setAdapter(new ButtonAdapter(getContext()));
+        ButtonAdapter buttonAdapter = new ButtonAdapter(getContext());
+        buttonGridView.setAdapter(buttonAdapter);
         buttonGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {

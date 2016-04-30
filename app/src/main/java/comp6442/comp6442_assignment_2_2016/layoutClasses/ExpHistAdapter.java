@@ -1,19 +1,14 @@
 package comp6442.comp6442_assignment_2_2016.layoutClasses;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
-import android.util.SparseBooleanArray;
 import android.view.Display;
-import android.view.LayoutInflater;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 /**
@@ -27,7 +22,7 @@ public class ExpHistAdapter extends ArrayAdapter<String> {
  * <p/>
  * A custom Adapter that extends the ArrayAdapter class. The Adapter is backed by the data model,
  * an ArrayList of Strings, and feeds TextViews
- * to the ListView UI element in ExpressionsFrag.
+ * to the ListView UI element in ExpHistFrag.
  */
 
 
@@ -85,6 +80,8 @@ public class ExpHistAdapter extends ArrayAdapter<String> {
             mTextView = (TextView) convertView;
         }
         mTextView.setText(expHistArray.get(position));
+        mTextView.setGravity(Gravity.END);
+        mTextView.setTextSize(16);
         return mTextView;
     }
 

@@ -1,16 +1,18 @@
- <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     tools:context=".layoutClasses.ButtonsFrag"
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
      xmlns:tools="http://schemas.android.com/tools"
      android:layout_width="match_parent"
-     android:layout_height="wrap_content">
-     <GridView
-     android:layout_width="match_parent"
      android:layout_height="wrap_content"
-     android:layout_gravity="center"
-     android:background="#bdf3fb"
-     android:gravity="center_horizontal"
-     android:id="@+id/buttonGridView"
-     android:stretchMode="columnWidth"
-     android:stackFromBottom="true"
-     android:numColumns="4"/>
- </FrameLayout>
+     tools:context=".layoutClasses.ButtonsFrag">
+     <GridView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:background="#bdf3fb"
+         android:visibility="visible"
+         android:gravity="center_horizontal"
+         android:id="@+id/buttonGridView"
+         android:stretchMode="columnWidth"
+         android:stackFromBottom="false"
+         android:minHeight="50dp"
+         android:numColumns="4"/>
+ </RelativeLayout>
