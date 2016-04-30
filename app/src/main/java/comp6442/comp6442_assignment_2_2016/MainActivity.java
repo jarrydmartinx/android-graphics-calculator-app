@@ -1,13 +1,14 @@
 package comp6442.comp6442_assignment_2_2016;
 
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import comp6442.comp6442_assignment_2_2016.layoutClasses.ExpressionsFrag;
+import comp6442.comp6442_assignment_2_2016.layoutClasses.ButtonsFrag;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -16,9 +17,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState != null) {
+            return;
+        }
+        ExpressionsFrag expFrag = new ExpressionsFrag();
+        ButtonsFrag stdButtonsFrag = new ButtonsFrag();
+        if (findViewById(R.id.fragment_container_top) != null
+                && findViewById(R.id.fragment_container_bottom) != null) {
+            // Add the fragment to the 'fragment_container' FrameLayout
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container_top, expFrag).commit();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container_bottom,stdButtonsFrag).commit();
+        }
+        else if (findViewById(R.id.fragment_container_left) != null
+                    && findViewById(R.id.fragment_container_top_right) != null
+                && findViewById(R.id.fragment_container_bottom_right) != null) {
+                ButtonsFrag sciButtonsFrag = new ButtonsFrag();
+            // Add the fragment to the 'fragment_container' FrameLayout
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragment_container_left, expFrag).commit();
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragment_container_bottom_right, stdButtonsFrag).commit();
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragment_container_top_right, sciButtonsFrag).commit();
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        // Check that the activity is using the layout version with
+        // the fragment_container FrameLayout
     }
 
     @Override
@@ -41,5 +68,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
     }
 }

@@ -1,4 +1,4 @@
-package comp6442.comp6442_assignment_2_2016.layout;
+package comp6442.comp6442_assignment_2_2016.layoutClasses;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,22 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
-
-import java.util.ArrayList;
 
 import comp6442.comp6442_assignment_2_2016.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link StdButtonsFrag.OnFragmentInteractionListener} interface
+ * {@link ButtonsFrag.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link StdButtonsFrag#newInstance} factory method to
+ * Use the {@link ButtonsFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StdButtonsFrag extends Fragment {
+public class ButtonsFrag extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,7 +32,7 @@ public class StdButtonsFrag extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public StdButtonsFrag() {
+    public ButtonsFrag() {
         // Required empty public constructor
     }
 
@@ -45,11 +42,11 @@ public class StdButtonsFrag extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment StdButtonsFrag.
+     * @return A new instance of fragment ButtonsFrag.
      */
     // TODO: Rename and change types and number of parameters
-    public static StdButtonsFrag newInstance(String param1, String param2) {
-        StdButtonsFrag fragment = new StdButtonsFrag();
+    public static ButtonsFrag newInstance(String param1, String param2) {
+        ButtonsFrag fragment = new ButtonsFrag();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

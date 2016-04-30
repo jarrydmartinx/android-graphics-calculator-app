@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="STD_MODE">356783</integer>
+    <integer name="SCI_MODE">23785</integer>
+    <integer name="OCT_MODE">34727</integer>
+    <integer name="HEX_MODE">90876</integer>
+</resources>
