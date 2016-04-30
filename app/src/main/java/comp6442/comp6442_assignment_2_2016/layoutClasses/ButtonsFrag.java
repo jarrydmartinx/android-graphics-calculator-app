@@ -57,15 +57,16 @@ public class ButtonsFrag extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    }
 
-        GridView gridview = (GridView) getActivity().findViewById(R.id.buttonGridView);
-        gridview.setAdapter(new ButtonAdapter(getContext()));
-
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View aView;
+        aView = inflater.inflate(R.layout.fragment_std_buttons, container, false);
+        GridView buttonGridView = (GridView) aView.findViewById(R.id.buttonGridView);
+        buttonGridView.setAdapter(new ButtonAdapter(getContext()));
+        buttonGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 ////insert some action
@@ -73,23 +74,15 @@ public class ButtonsFrag extends Fragment {
                 // for = it gets the whole string from the main textview field and gives to tokenizer;
             }
         });
-
-
+        return aView;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_std_buttons, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+//    // TODO: Rename method, update argument and hook method into UI event
+//    public void onButtonPressed(Uri uri) {
+//        if (mListener != null) {
+//            mListener.onFragmentInteraction(uri);
+//        }
+//    }
 
     @Override
     public void onAttach(Context context) {

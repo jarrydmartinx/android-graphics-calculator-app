@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container_top, expFrag).commit();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container_bottom,stdButtonsFrag).commit();
+                    .add(R.id.fragment_container_bottom, stdButtonsFrag).commit();
         }
         else if (findViewById(R.id.fragment_container_left) != null
                     && findViewById(R.id.fragment_container_top_right) != null
@@ -77,12 +77,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onButtonCLicked(int position) {
 
     }
 
     @Override
     public void onExpSelected(int position) {
-
+        return;
     }
 }

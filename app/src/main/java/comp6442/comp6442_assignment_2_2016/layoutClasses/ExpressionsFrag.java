@@ -6,27 +6,24 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import comp6442.comp6442_assignment_2_2016.R;
 
-/**
- * Use the {@link ExpressionsFrag#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ExpressionsFrag extends Fragment {
-//    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
-    private ListView expList;
-    private EditText inputTextView;
-    private Context context = getContext();
+    private Context context;
     private OnExpSelectedListener mListener;
+    private ListView expListView;
+    private ArrayList<String> expHistArray;
+    private TextView equalsTextView;
+    private EditText inputEditText;
 
     public ExpressionsFrag() {
         // Required empty public constructor
@@ -50,27 +47,31 @@ public class ExpressionsFrag extends Fragment {
 //        return fragment;
 //    }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        expList = (ListView) getActivity().findViewById(R.id.expListView);
-        inputTextView = (EditText) getActivity().findViewById(R.id.inputEditText);
+        context = getContext();
+        expHistArray = new ArrayList<>(Arrays.asList("first fake exp", "second fake exp", "3rd 5% + 23423*log(6)" ));
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_expressions, container, false);
-
+        View aView = inflater.inflate(R.layout.fragment_expressions, container, false);
+        inputEditText = (EditText) aView.findViewById(R.id.inputEditText);
+        equalsTextView = (TextView) aView.findViewById(R.id.equalsTextView);
+        expListView = (ListView) aView.findViewById(R.id.expListView);
+        ExpHistAdapter expHistAdapter = new ExpHistAdapter(context, R.id.expListView, expHistArray);
+        equalsTextView.setText("");
+        expListView.setAdapter(expHistAdapter);
+        expListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                inputEditText.setText(expHistArray.get(position));
+            }
+        });
+        return aView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
