@@ -15,7 +15,7 @@ import comp6442.comp6442_assignment_2_2016.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ButtonsFrag.OnFragmentInteractionListener} interface
+ * {@link OnButtonSelectedListener} interface
  * to handle interaction events.
  * Use the {@link ButtonsFrag#newInstance} factory method to
  * create an instance of this fragment.
@@ -30,7 +30,7 @@ public class ButtonsFrag extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private OnButtonSelectedListener mListener;
 
     public ButtonsFrag() {
         // Required empty public constructor
@@ -63,7 +63,7 @@ public class ButtonsFrag extends Fragment {
         }
 
         GridView gridview = (GridView) getActivity().findViewById(R.id.buttonGridView);
-        gridview.setAdapter(new ButtonAdapter(getContext(), "STANDARD"));
+        gridview.setAdapter(new ButtonAdapter(getContext()));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
@@ -81,7 +81,7 @@ public class ButtonsFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_std_buttons2, container, false);
+        return inflater.inflate(R.layout.fragment_std_buttons, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -94,11 +94,11 @@ public class ButtonsFrag extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnButtonSelectedListener) {
+            mListener = (OnButtonSelectedListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnButtonSelectedListener");
         }
     }
 
@@ -118,8 +118,8 @@ public class ButtonsFrag extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnButtonSelectedListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onButtonCLicked(int position);
     }
 }

@@ -11,7 +11,13 @@ import comp6442.comp6442_assignment_2_2016.layoutClasses.ExpressionsFrag;
 import comp6442.comp6442_assignment_2_2016.layoutClasses.ButtonsFrag;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+    implements ExpressionsFrag.OnExpSelectedListener, ButtonsFrag.OnButtonSelectedListener {
+
+    public void onArticleSelected(int position) {
+        // The user selected the headline of an article from the HeadlinesFragment
+        // Do something here to display that article
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +76,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onExpSelected(int position) {
+
     }
 }
